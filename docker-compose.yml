@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  workspace:
+    build:
+      context: .
+      dockerfile: ./docker/workspace/Dockerfile
+    container_name: nextjs-sample-workspace
+    tty: true
+    volumes:
+      - .:/work/nextjs-sample
+      - nextjs_sample_node_modules_volume:/work/nextjs-sample/node_modules
+    working_dir: /root/app/nextjs-sample
+    ports:
+      - 3001:3000
+
+volumes:
+  nextjs_sample_node_modules_volume:
